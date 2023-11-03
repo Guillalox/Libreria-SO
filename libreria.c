@@ -1,7 +1,7 @@
-#include <libreria.h>
+#include "libreria.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #define MaxLineLength 1024
 
 int head(int N){
@@ -18,6 +18,31 @@ int head(int N){
     }
     return 0;
 }
+int tail(int N) {
+    // Declaración de un array para almacenar las últimas N líneas
+    char lines[N][MaxLineLength];
+    int count = 0; // Contador de líneas leídas
+
+    while (fgets(lines[count % N], MaxLineLength, stdin) != NULL) {
+        // Leer líneas desde la entrada estándar y almacenarlas en el array
+        count++;
+    }
+    for (int i = count - N; i < count; i++) {
+        // Imprimir las últimas N líneas en orden
+        printf("%s", lines[i % N]);
+    }
+
+    return 0;
+}
+
+
+
+int compareLines(const void* a, const void* b){
+    const char* line1 = *(const char**)a;
+    const char* line2 = *(const char**)b;
+    return strlen(line2)-strlen(line1);
+} /*Funcion que se utiliza para comparar las lineas con el objetivo de utilizarla para la ordenación,
+    devuelve un numero negativo si la primera linea es mayor que la segunda y positivo si la segunda linea es mayor que la primera*/
 
 int longlines(int N){
     char** lines = NULL;
@@ -40,7 +65,7 @@ int longlines(int N){
             line[strlen(line) - 1] == '\0';
         } /*Quita el ultimo elemento de la linea si fuera un salto de linea*/
 
-        lines[lineCount] = strdup(lines);
+        lines[lineCount] = strdup(line);
         /*Añade la linea a la lista de lineas lines*/
 
         if (lines[lineCount] == NULL){
@@ -88,9 +113,3 @@ int longlines(int N){
     
 }
 
-int compareLines(const void* a, const void* b){
-    const char* line1 = *(const char**)a;
-    const char* line2 = *(const char**)b;
-    return strlen(line2)-strlen(line1);
-} /*Funcion que se utiliza para comparar las lineas con el objetivo de utilizarla para la ordenación,
-    devuelve un numero negativo si la primera linea es mayor que la segunda y positivo si la segunda linea es mayor que la primera*/

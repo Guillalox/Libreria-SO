@@ -3,7 +3,7 @@
 gcc -c libreria.c
 ar rcs libreria.a libreria.o
 
-gcc -wall -wextra -o test test.c -I -L./ -l libreria
+gcc -Wall -Wextra -o test test.c -L./ -l:libreria.a
 
 rm libreria.o
 
