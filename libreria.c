@@ -58,7 +58,7 @@ int longlines(int N){
         return -1;
     }/*Comprueba que se ha creado correctamente lines*/
 
-    while (fgets(line, MaxLineLength, stdin)){
+    while (fgets(line, MaxLineLength, stdin) != NULL){
     /*Mientras que se obtengan lineas*/    
     
         if (line[strlen(line) - 1] == '\n'){
