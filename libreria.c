@@ -62,10 +62,11 @@ int longlines(int N){
     /*Mientras que se obtengan lineas*/    
     
         if (line[strlen(line) - 1] == '\n'){
-            line[strlen(line) - 1] == '\0';
+            line[strlen(line) - 1] = '\0';
         } /*Quita el ultimo elemento de la linea si fuera un salto de linea*/
 
         lines[lineCount] = strdup(line);
+        
         /*Añade la linea a la lista de lineas lines*/
 
         if (lines[lineCount] == NULL){
@@ -101,10 +102,16 @@ int longlines(int N){
             linesToShow = lineCount;
         }
     */
+   
 
     for (int i = 0; i < linesToShow; i++){
         printf("%s\n", lines[i]);
     }/*Imprimimos las lineas*/
+
+
+     for (int i = 0; i < lineCount; i++) {
+        free(lines[i]);
+    } /*Liberar la memoria, se debe recorrer la lista de líneas y liberar cada elemento individualmente*/
 
     free(lines);
     /*Liberamos de memoria la lista lines*/
