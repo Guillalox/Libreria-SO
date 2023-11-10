@@ -79,8 +79,8 @@ int longlines(int N){
 
         if(lineCount >= capacity){
             capacity *= 2;
-            lines = (char**)malloc(sizeof(char*) * capacity);
-            /*Actualiza la capacidad de lines si se llega a su máximo, multiplicando la misma por 2*/
+            lines = (char**)realloc(lines, sizeof(char*) * capacity);
+            /*Actualiza la capacidad de lines si se llega a su máximo, multiplicando la misma por 2 y se usa realloc para evitar la pérdida de datos*/
 
             if (lines == NULL){
                 fprintf(stderr, "Error");
