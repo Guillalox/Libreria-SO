@@ -84,7 +84,7 @@ int longlines(int N){
 
             if (lines == NULL){
                 fprintf(stderr, "Error");
-                return -1;
+                return -1;  
             }/*Comprueba que al hacer la actualización de lines se haya creado correctamente y no pierda datos*/
         }
         
