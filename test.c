@@ -8,20 +8,31 @@ int main(int argc, char *argv[]) {
     int N = 10; // Número predeterminado de líneas a mostrar
 
     if (argc == 3) {
-        N = atoi(argv[2]); // Si se proporcionan 3 argumentos,contando el argumento ./test, el segundo argumento se convierte en N
+         int arg3Value = atoi(argv[2]);
 
-        // Verifica el primer argumento para determinar qué función llamar
-        if (strcmp(argv[1], "-head") == 0) {
-            head(N);
-        } else if (strcmp(argv[1], "-tail") == 0) {
-            tail(N);
-        } else if (strcmp(argv[1], "-longlines") == 0) {
-            longlines(N);
+        // Verifica si la conversión fue exitosa
+        if (arg3Value == 0 && strcmp(argv[2], "0") != 0) {
+            // La conversión falló, ya que atoi devuelve 0 tanto para la conversión exitosa de "0" como para la fallida
+            fprintf(stderr, "El tercer argumento debe ser un número entero.\n");
+            return 1;
         } else {
+            // La conversión fue exitosa, actualiza N
+            N = arg3Value;
+            // Verifica el primer argumento para determinar qué función llamar
+            if (strcmp(argv[1], "-head") == 0) {
+            head(N);
+            } else if (strcmp(argv[1], "-tail") == 0) {
+            tail(N);
+            } else if (strcmp(argv[1], "-longlines") == 0) {
+            longlines(N);
+            } else {
             // Muestra un mensaje de uso incorrecto si el primer argumento no coincide con las opciones válidas
             fprintf(stderr, "Uso incorrecto. Uso: %s <-head|-tail|-longlines> [número de líneas]\n", argv[0]);
             return 1;
         }
+        }
+        
+        
     }
 
     if (argc == 2) {
