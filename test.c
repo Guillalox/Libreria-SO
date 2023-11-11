@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
         // Verifica si la conversión fue exitosa
         if (arg3Value == 0 && strcmp(argv[2], "0") != 0) {
             // La conversión falló, ya que atoi devuelve 0 tanto para la conversión exitosa de "0" como para la fallida
-            fprintf(stderr, "El tercer argumento debe ser un número entero.\n");
+            fprintf(stderr, "El segundo argumento debe ser un número entero.\n");
             return 1;
         } else {
             // La conversión fue exitosa, actualiza N
