@@ -31,6 +31,7 @@ int tail(int N) {
         // Imprimir las últimas N líneas en orden
         printf("%s", lines[i % N]);
     }
+    printf("\n");
 
     return 0;
 }
