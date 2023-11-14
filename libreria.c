@@ -5,13 +5,16 @@
 #define MaxLineLength 1024
 
 int head(int N){
+    // Declaración de un array para almacenar las primeras N líneas
     char line[MaxLineLength];
-    int count = 0;
-
+    int count = 0;  // Contador de líneas leídas
+    // Mientras no se haya alcanzado el numero de lineas deseado
     while (count < N){
         if(fgets(line, MaxLineLength, stdin) == NULL){
+            // Leer líneas desde la entrada estándar y almacenarlas en el array
             break;
         } else {
+             // Imprimir las primeras N líneas en orden
             printf("%s", line);
             count++;
         }
@@ -19,7 +22,7 @@ int head(int N){
     return 0;
 }
 int tail(int N) {
-    // Declaración de un array para almacenar las últimas N líneas
+    // Declaración de un array de longitud maxima N para almacenar las últimas N líneas
     char lines[N][MaxLineLength];
     int count = 0; // Contador de líneas leídas
 
